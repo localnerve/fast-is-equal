@@ -1,6 +1,5 @@
-// benchmarks/compareIsEqual.ts
-import { fastIsEqual } from '../src/index';
-import isEqual from 'lodash/isEqual';
+import { fastIsEqual } from '../dist/index.js';
+import isEqual from 'lodash/isEqual.js';
 import { performance } from 'perf_hooks';
 
 // ANSI color codes
@@ -24,8 +23,8 @@ const testCases = [
   { label: 'Array of Objects (equal)', a: [{ x: 1 }, { y: 2 }], b: [{ x: 1 }, { y: 2 }] },
   {
     label: 'Circular Reference',
-    a: (() => { const obj: any = {}; obj.self = obj; return obj; })(),
-    b: (() => { const obj: any = {}; obj.self = obj; return obj; })(),
+    a: (() => { const obj = {}; obj.self = obj; return obj; })(),
+    b: (() => { const obj = {}; obj.self = obj; return obj; })(),
   },
   { label: 'Map (equal)', a: new Map([[1, 'one'], [2, 'two']]), b: new Map([[1, 'one'], [2, 'two']]) },
   { label: 'Map (unequal)', a: new Map([[1, 'one'], [2, 'two']]), b: new Map([[1, 'one'], [3, 'three']]) },
@@ -39,7 +38,7 @@ const testCases = [
 const iterations = 1_000_000;
 
 // Function to measure performance of a given equality function
-function measurePerformance(fn: any, a: any, b: any) {
+function measurePerformance(fn, a, b) {
   const start = performance.now();
   for (let i = 0; i < iterations; i++) {
     fn(a, b);
