@@ -80,6 +80,36 @@ describe('isEqual', () => {
     expect(fastIsEqual(arr1, arr2)).toBe(false);
   });
 
+  it('should return true for identical arrays with objects', () => {
+    const arr1 = [1, 2, { one: 'two' }, 3];
+    const arr2 = [1, 2, { one: 'two' }, 3];
+    expect(fastIsEqual(arr1, arr2)).toBe(true);
+  });
+
+  it('should return false for not identical arrays with objects, difference after object', () => {
+    const arr1 = [1, 2, { one: 'two' }, 3];
+    const arr2 = [1, 2, { one: 'two' }, 4];
+    expect(fastIsEqual(arr1, arr2)).toBe(false);
+  });
+
+  it('should return false for not identical arrays with differences in objects', () => {
+    const arr1 = [1, 2, { one: 'two' }, 3];
+    const arr2 = [1, 2, { one: 'three' }, 3];
+    expect(fastIsEqual(arr1, arr2)).toBe(false);
+  });
+
+  it('should return true for identical arrays with multiple objects', () => {
+    const arr1 = [1, 2, { one: 'two' }, 3, { two: 'three' }];
+    const arr2 = [1, 2, { one: 'two' }, 3, { two: 'three'}];
+    expect(fastIsEqual(arr1, arr2)).toBe(true);
+  });
+
+  it('should return false for not identical arrays with objects, difference in last object', () => {
+    const arr1 = [1, 2, { one: 'two' }, 3, { two: 'three' }];
+    const arr2 = [1, 2, { one: 'two' }, 3, { two: 'four'}];
+    expect(fastIsEqual(arr1, arr2)).toBe(false);
+  });
+
   // **Dates**
   it('should return true for identical dates', () => {
     const date = new Date();
