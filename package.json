@@ -1,6 +1,6 @@
 {
   "name": "@localnerve/fast-is-equal",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Blazing-fast equality checks, minus the baggage. A lean, standalone alternative to Lodash's isEqual—because speed matters.",
   "keywords": [
     "lodash",
@@ -33,11 +33,11 @@
   ],
   "devDependencies": {
     "@types/jest": "^30.0.0",
-    "@types/lodash": "^4.17.20",
+    "@types/lodash": "^4.17.21",
     "jest": "^30.2.0",
     "lodash": "^4.17.21",
-    "rimraf": "^6.1.0",
-    "ts-jest": "^29.4.5",
+    "rimraf": "^6.1.2",
+    "ts-jest": "^29.4.6",
     "tslib": "^2.8.1",
     "typescript": "^5.9.3"
   },

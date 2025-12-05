@@ -26,9 +26,10 @@ export function fastIsEqual(a: any, b: any) {
       if (Number.isNaN(elemA) && Number.isNaN(elemB)) continue;
       if (typeof elemA === 'object' || typeof elemB === 'object' ||
         typeof elemA === 'function' || typeof elemB === 'function') {
-        return deepEqual(elemA, elemB, new Map());
+        if (!deepEqual(elemA, elemB, new Map())) return false;
+      } else if (elemA !== elemB) {
+        return false;
       }
-      if (elemA !== elemB) return false;
     }
     return true;
   }
